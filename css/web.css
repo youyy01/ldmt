@@ -117,10 +117,6 @@ textarea.input {height:auto;overflow:auto;resize:none;line-height:1.6em; padding
 .btn-pack.block {display:block; width:100%;}
 .btn-pack.w110 {min-width:110px !important;}
 .btn-pack.round {border-radius:4px;}
-.btn-pack .ico-photo {display:inline-block; vertical-align:middle; margin:-.2em 5px 0 0; width:14px; height:14px; background:url("../images/icon_photo.png") 50% 50% no-repeat;}
-.btn-pack .ico-bookmark {display:inline-block; vertical-align:middle; margin:-.2em 5px 0 0; width:14px; height:14px; background:url("../images/icon_bookmark.png") 50% 50% no-repeat;}
-.btn-pack .ico-map {display:inline-block; vertical-align:middle; margin:-.2em 5px 0 0; width:14px; height:14px; background:url("../images/icon_map.png") 50% 50% no-repeat;}
-.btn-pack .ico-load {display:inline-block; vertical-align:middle; margin:-.2em 1px 0 0; width:14px; height:14px; background:url("../images/icon_load.png") 50% 50% no-repeat;}
 
 .buttons {margin-top:20px;}
 .buttons:after {content:""; display:block; clear:both;}
@@ -167,7 +163,7 @@ body {background:#121212; overflow:hidden;}
 
 
 /* 이벤트 정보알림 */
-.event-notice-wrap {display:flex; align-items:center; justify-content:space-between; height:48px; padding:0 24px;}
+.event-notice-wrap {display:flex; align-items:center; justify-content:space-between; height:48px; padding:0 24px 0 0;}
 .event-notice-wrap .notice-info {display:flex; align-items:center; flex:1 1 auto; min-width:0; width:1%;}
 .event-notice-wrap .notice-info .title {position:relative; width:210px; display:flex; align-items:center; justify-content:center; background:#405CE5; color:#fff; font-size:16px; line-height:48px; font-weight:500;}
 .event-notice-wrap .notice-info .title i {width:20px; height:20px; background:url('../images/icon_note.png') 50% 50% no-repeat; margin-right:10px;}
@@ -196,14 +192,14 @@ html.monitor-opened #map {left:-768px}
 html.monitor-opened #map .map {left:400px}
 .monitor-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; padding:20px;overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:10}
 .monitor-list .selectpicker {width:100%; height:44px; border:0;}
-.monitor-list .select2-container--default .select2-selection--single {font-weight:600; background-color:#141414; color:#fff; border-radius:4px;  border:0; height:44px; border:0;} 
-.monitor-list .select2-container--default .select2-selection--single .select2-selection__rendered {line-height:44px; color:#fff;}
-.monitor-list .select2-container .select2-selection--single .select2-selection__rendered {padding:0 16px;}
-.monitor-list .select2-container--default .select2-selection--single .select2-selection__arrow {position:absolute; top:0; right:10px; width:20px; height:44px; background-image:url("../images/select_arrow.svg");background-position:100% 50%;background-repeat:no-repeat;}
-.monitor-list .select2-container--default .select2-selection--single .select2-selection__arrow b {display:none}
-.monitor-list .select2-dropdown {background:#141414; border:0;}
-.monitor-list .select2-dropdown ul li {padding:5px 16px;}
-.monitor-list .select2-dropdown input {display:none}
+.select2-container--default .select2-selection--single {font-weight:600; background-color:#141414; color:#fff; border-radius:4px;  border:0; height:44px; border:0;} 
+.select2-container--default .select2-selection--single .select2-selection__rendered {line-height:44px; color:#fff;}
+.select2-container .select2-selection--single .select2-selection__rendered {padding:0 16px;}
+.select2-container--default .select2-selection--single .select2-selection__arrow {position:absolute; top:0; right:10px; width:20px; height:44px; background-image:url("../images/select_arrow.svg");background-position:100% 50%;background-repeat:no-repeat;}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {display:none}
+.select2-dropdown {background:#141414; border:0;}
+.select2-dropdown ul li {padding:5px 16px;}
+.select2-dropdown input {display:none}
 .monitor-list .count-wrap {padding:24px 0;}
 .monitor-list .count-wrap ul {display:flex;}
 .monitor-list .count-wrap ul li {width:20%; position:relative; text-align:center;}
@@ -212,8 +208,8 @@ html.monitor-opened #map .map {left:400px}
 .monitor-list .count-wrap ul li .ico {width:64px; height:64px; background:#3a2c9b; border-radius:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;}
 .monitor-list .count-wrap ul li .tit {color:#bdbdbd; font-size:13px; line-height:1.4em; font-weight:500;}
 .monitor-list .count-wrap ul li .num {color:#fff; font-size:32px; line-height:1.4em; font-weight:600; letter-spacing: -0.48px;}
-.monitor-list .graph-box {background:#2c2c2c; border-radius:8px; height:280px; padding:16px; margin-bottom:12px;}
-.monitor-list .progress-wrap .item {margin-bottom:4px; background:#2C2C2C; border-radius:8px; padding:15px 25px; display:flex; align-items:center;}
+.monitor-list .graph-box {background:#2c2c2c; border-radius:8px; height:280px; padding:16px; margin-bottom:24px;}
+.monitor-list .progress-wrap .item {margin-bottom:10px; background:#2C2C2C; border-radius:8px; padding:17px 25px; display:flex; align-items:center;}
 .monitor-list .progress-wrap .item:last-child {margin-bottom:0;}
 .monitor-list .progress-wrap .item .tit {width:140px; font-size:16px; line-height:1.4em; color:#fff;}
 .monitor-list .progress-wrap .item .number {width:90px; display:flex; align-items:center;}
