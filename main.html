@@ -14,10 +14,10 @@
 	<meta property="og:description"	content="">
 	<meta property="og:image"content="">
 	<title>AUTONOMOUS</title>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="css/web.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />	
 	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<link rel="stylesheet" type="text/css" href="css/select2.css">
+	<link rel="stylesheet" type="text/css" href="css/web.css">
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/select2.min.js"></script>
@@ -60,14 +60,433 @@
 	<!-- // body -->
 	<div id="container">
 		<a href="#" class="mapview-btns">Map View 확장</a>
-
-		<div class="control-btns">
+		
+		<!-- 플로팅 메뉴 -->
+		<div class="floating-btns">
 			<a href="#" class="btns">플로팅 메뉴</a>
+			<ul class="menu">
+				<li class="camera-link"><a href="#camera-layout"><img src="images/floating_icon1.svg" alt="카메라"></a></li>
+				<li class="video-link"><a href="#video-layout"><img src="images/floating_icon2.svg" alt="동영상"></a></li>
+				<li class="zoom-link"><a href="#"><img src="images/floating_icon3.svg" alt="카메라 확대창"></a></li>
+			</ul>
 		</div>
+		<script>
+			$(document).ready(function(){ 
+				// 플로팅 메뉴
+				$(".floating-btns .btns").click(function(e){
+					e.preventDefault();
+					t = $(this).parent('div');
+					if (t.hasClass('active')) {
+						t.removeClass('active');
+						t.find('.menu').slideUp('fast');
+						return false; 
+					}else {
+						$(".floating-btns").removeClass('active');
+						t.addClass('active');	
+						if(t.find('ul').hasClass('menu')){		
+							$(".floating-btns .btns .menu").slideUp('fast');	
+							t.find('.menu').slideDown('fast');	
+							return false;
+						}
+					}
+				});
+				$(".camera-link>a").click(function(e){ // 카메라 선택
+					e.preventDefault();
+					if(!$(this).parent("li").hasClass("active")){
+						$(".camera-link").removeClass("active");
+						$("html").addClass("camera-opened"); 
+						$(".floating-btns").removeClass('active');
+					}else{
+						$("html").removeClass("camera-opened");
+					}	
+				});
+
+				$(".camera-layout>h2>.close").click(function(e){ //카메라 팝업 닫기
+					e.preventDefault();
+					$(".floating-btns").removeClass("active");
+					$("html").removeClass("camera-opened");
+					$(".camera-list").hide();
+					$(".camera-list > ul > li").removeClass('active');
+				});
+
+				$(".video-link>a").click(function(e){ // 동영상 선택
+					e.preventDefault();
+					if(!$(this).parent("li").hasClass("active")){
+						$(".video-link").removeClass("active");
+						$("html").addClass("video-opened"); 
+						$(".floating-btns").removeClass('active');
+					}else{
+						$("html").removeClass("video-opened");
+					}	
+				});
+
+				$(".video-layout>h2>.close").click(function(e){ //동영상 팝업 닫기
+					e.preventDefault();
+					$(".floating-btns").removeClass("active");
+					$("html").removeClass("video-opened");
+					$(".video-playback").hide();
+					$(".playback-control").hide();
+				});
+
+				$(".zoom-link>a").click(function(e){ // 동영상 선택
+					e.preventDefault();
+					if(!$(this).parent("li").hasClass("active")){
+						$(".zoom-link").removeClass("active");
+						$("html").addClass("zoom-opened"); 
+						$(".floating-btns").removeClass('active');
+					}else{
+						$("html").removeClass("zoom-opened");
+					}	
+				});
+			});
+		</script>
+		<!-- 플로팅 메뉴 end -->
+
+		<!-- 플로팅 카메라 선택 
+			개발자 노트 최대 4개까지만 선택 가능하게 하주세요!!
+		-->
+		<div id="camera-layout" class="camera-layout">
+			<h2>카메라 선택창 <a href="#" class="close">닫기</a></h2>
+			<div class="box">
+				<div class="scroll">
+					<ul>
+						<li class="active">
+							<a href="#" >
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 1</div>
+							</a>
+						</li>
+						<li class="active">
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 2</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 안전지대 여성안심 카메라 신사역 사거리 안전지대 여성안심 카메라</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 3</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 4</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 5</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 6</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 7</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="icon"></div>
+								<div class="tit">신사역 사거리 카메라 8</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="btns">
+					<a href="#">확인</a>
+				</div>
+			</div>
+		</div>	
+		<script>
+			$(document).ready(function(){ 
+				$(".camera-layout > .box > .btns > a").click(function(e){ // camera-layout 확인버튼 누를시 활성화
+					e.preventDefault();
+					$(".camera-list").show();
+				});
+			});
+		</script>
+		<!-- 플로팅 카메라 선택 end -->
+
+		<!-- 플로팅 카메라 선택후 -->
+		<div class="camera-list">
+			<ul>
+				<li><a href="#"><div class="thumb"><img src="images/camera_img1.png" alt=""></div><div class="tit">CAM 01</div></a>
+					<div class="camera-popup">
+						<div class="pop-img">
+							<div class="tt">CAM 01</div>
+							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+							<a href="#" class="close">닫기</a>
+						</div>
+					</div>
+				</li> <!-- 이미지 사이즈  246 * 138 -->
+				<li><a href="#"><div class="thumb"><img src="images/camera_img2.png" alt=""></div><div class="tit">CAM 02</div></a>
+					<div class="camera-popup">
+						<div class="pop-img">
+							<div class="tt">CAM 02</div>
+							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+							<a href="#" class="close">닫기</a>
+						</div>
+					</div>
+				</li> <!-- 이미지 사이즈  246 * 138 -->
+				<li><a href="#"><div class="thumb"><img src="images/camera_img1.png" alt=""></div><div class="tit">CAM 03</div></a>
+					<div class="camera-popup">
+						<div class="pop-img">
+							<div class="tt">CAM 03</div>
+							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+							<a href="#" class="close">닫기</a>
+						</div>
+					</div>
+				</li> <!-- 이미지 사이즈  246 * 138 -->
+				<li><a href="#"><div class="thumb"><img src="images/camera_img2.png" alt=""></div><div class="tit">CAM 04</div></a>
+					<div class="camera-popup">
+						<div class="pop-img">
+							<div class="tt">CAM 04</div>
+							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+							<a href="#" class="close">닫기</a>
+						</div>
+					</div>
+				</li> <!-- 이미지 사이즈  246 * 138 -->	
+			</ul>
+		</div>		
+		<script>
+			$(document).ready(function(){ 
+				$(".camera-list > ul > li > a").click(function(e){
+					e.preventDefault();
+					t = $(this).parent('li');
+					if (t.hasClass('active')) {
+						t.removeClass('active');
+						t.find('.camera-popup').slideUp('fast');
+						return false; 
+					}else {
+						$(".camera-list > ul > li").removeClass('active');
+						t.addClass('active');	
+						if(t.find('div').hasClass('camera-popup')){		
+							$(".camera-list > ul > li.link-content").slideUp('fast');	
+							t.find('.camera-popup').slideDown('fast');	
+							return false;
+						}
+					}
+				});
+
+				$(".camera-popup>.pop-img>.close").click(function(e){ // 카메라 팝업 닫기
+					e.preventDefault();
+					$(".camera-popup").hide();
+				});
+			});
+		</script>
+		<!-- 플로팅 카메라 선택후 end -->
+
+		<!-- 플로팅 동영상 클릭시 -->
+		<div id="video-layout" class="video-layout">
+			<h2>진입차량 통계 <a href="#" class="close">닫기</a></h2>
+			<div class="box">
+				<div class="form">
+					<div class="item">
+						<div class="tit"><label for="video-date">날짜</label></div>
+						<div class="info">
+							<input type="text" name="video-date" id="video-date" value="2023-05-16" class="input date" style="width:100%;">
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"><label for="video-time">시간</label></div>
+						<div class="info">
+							<div class="time-wrap">
+								<input type="text" name="video-time" id="video-time" value="2023-05-16" class="input time" style="width:49%;"> <span>-</span>
+								<input type="text" name="video-time" id="video-time2" value="2023-05-16" class="input time" style="width:49%;">
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"><label for="video-maps">위치</label></div>
+						<div class="info">
+							<select name="video-maps" id="video-maps" class="selectpicker" style="width:100%">
+								<option value="">세솔동 교차로</option>
+								<option value="">새출동 교차로2</option>
+							</select>
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"><label for="video-etc">유형</label></div>
+						<div class="info">
+							<select name="video-etc" id="video-etc" class="selectpicker" style="width:100%">
+								<option value="">All</option>
+							</select>
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"></div>
+						<div class="info">
+							<button type="button" class="submit"><i></i> 검색</button>
+						</div>
+					</div>
+				</div>
+				<div class="total"><strong>12</strong> 개의 검색결과</div>
+				<div class="scroll">
+					<div class="table01">
+						<table>
+							<caption>진입차량 통계 검색결과</caption>
+							<colgroup>
+								<col style="width:136px">
+								<col style="width:80px">
+								<col style="width:auto;">
+								<col style="width:80px">								
+							</colgroup>
+							<thead>
+								<tr>
+									<th>차종 구분</th>
+									<th>대수</th>
+									<th>유형</th>
+									<th>실행</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="4">검색결과가 없습니다.</td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+								<tr>
+									<td>2023-05-15</td>
+									<td>14:00</td>
+									<td>Collisian</td>
+									<td><a href="#" class="btn-play">영상 플레이</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 플로팅 동영상 클릭시 end -->
+
+		<!-- 플로팅 동영상 클릭 후 playback  -->
+		<div class="video-playback">
+			<div class="wrap">
+				<div class="tt">Playback : 2023-05-16 14:55:13.000</div>
+				<button type="button">x1.5</button>
+			</div>
+		</div>
+
+		<div class="playback-control"></div>
+		<script>
+			$(document).ready(function(){ 
+				$(".btn-play").click(function(e){ // camera-layout 확인버튼 누를시 활성화
+					e.preventDefault();
+					$(".video-playback").show();
+					$(".playback-control").show();
+				});
+			});
+		</script>
+		<!-- 플로팅 동영상 클릭 후 playback  end -->
+
+		<!-- 플로팅 센서 상태창 -->
+		<div class="lis-layout">
+			<div class="wrap">
+				<div class="title">
+					<div class="icon"></div>
+					<div class="text">
+						LIS Latency <br>
+						<strong>10</strong>ms
+					</div>
+				</div>
+				<div class="info">
+					<ul>
+						<li>
+							<div class="tit">Lidar RPM</div>
+							<div class="thumb"><img src="images/map.png" alt=""></div> <!-- 이미지 사이즈 230 * 130 -->
+						</li>
+						<li>
+							<div class="tit">Lidar Temp.</div>
+							<div class="thumb"><img src="images/map.png" alt=""></div> <!-- 이미지 사이즈 230 * 130 -->
+						</li>
+						<li>
+							<div class="tit">Lidar Volt.</div>
+							<div class="thumb"><img src="images/map.png" alt=""></div> <!-- 이미지 사이즈 230 * 130 -->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 플로팅 센서 상태창 end -->
+
+		<!-- 다중교차로 -->
+		<div class="cross-list">
+			<ul>
+				<li>
+					<div class="tit">신사역 사거리 교차로 #1</div>
+					<img src="images/map2.png" class="map" alt="">
+				</li>
+				<li>
+					<div class="tit">강남 고속버스 터미널 교차로 #3</div>
+					<img src="images/map3.png" class="map" alt="">
+				</li>
+			</ul>
+		</div>
+		<!-- 다중교차로 end -->
 
 		<!-- 실시간모니터링 -->
 		<div class="monitor-list">
-			<select name="" id="" class="selectpicker input">
+			<select name="" id="" class="selectpicker">
 				<option value="">새출동 교차로</option>
 				<option value="">새출동 교차로2</option>
 			</select>
@@ -173,14 +592,396 @@
 		</div>
 		<!-- 실시간모니터링 end -->
 
+		<!-- 교통량 통계 -->
+		<div class="statis-list">
+			<div class="li-item">
+				<h2 class="title">검색 조건 선택</h3>
+				<div class="box">
+					<div class="item">
+						<div class="tit"><label for="date">날찌</label></div>
+						<div class="info">
+							<input type="text" name="date" id="date" value="2023-05-16" class="input date" style="width:100%;">
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"><label for="select_etc">통계종류</label></div>
+						<div class="info">
+							<select name="select_etc" id="select_etc" class="selectpicker" style="width:100%">
+								<option value="etc1">차량 교통량 통계</option>
+								<option value="etc2">보행자 통계</option>
+								<option value="etc3">법규 위반 통계</option>
+							</select>
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"><label for="time">시간</label></div>
+						<div class="info">
+							<div class="time-wrap">
+								<input type="text" name="time" id="time" value="2023-05-16" class="input time" style="width:49%;"> <span>-</span>
+								<input type="text" name="time" id="time" value="2023-05-16" class="input time" style="width:49%;">
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"><label for="map_ch">위치</label></div>
+						<div class="info">
+							<select name="map_ch" id="map_ch" class="selectpicker" style="width:100%">
+								<option value="">세솔동 교차로</option>
+								<option value="">새출동 교차로2</option>
+							</select>
+						</div>
+					</div>
+					<div class="item">
+						<div class="tit"></div>
+						<div class="info">
+							<button type="button" class="submit"><i></i> 검색</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="li-item">
+				<div id="etc1">
+					<h2 class="title">안말 사거리 교통량 통계 <span>(2023-10-11 07:00 ~ 19:30)</span></h3>
+					<div class="box">
+						<img src="images/graph2.png" alt="">
+					</div>
+				</div>
+				<div id="etc2">
+					<h2 class="title">횡단 보도별 보행자 통계 <span>(안말사거리, 2023-01-03)</span></h3>
+					<div class="box">
+						<div class="graph-opt"><img src="images/graph2.png" alt=""></div>
+						<div class="crossroad-wrap">
+							<div class="tt">방향별 통계 선택</div>
+							<div class="bg-box">
+								<ul>
+									<li class="road-link m1"><a href="#"><div class="txt"><span>이매역</span></div></a></li>
+									<li class="road-link m2"><a href="#"><div class="txt"><span>판교</span></div></a></li>
+									<li class="road-link m3"><a href="#"><div class="txt"><span>서현역</span></div></a></li>
+									<li class="road-link m4"><a href="#"><div class="txt"><span>수내역</span></div></a></li>
+									<li class="road-link m5"><a href="#"><div class="txt"><span>안말<br>교차로</span></div></a></li>
+								</ul>
+							</div>
+							<script>
+								$(document).ready(function(){ 								
+									$(".bg-box > ul > li > a").click(function(){ // 방향별 통계 전체 선택
+										t = $(this).parent('li');
+										if (t.hasClass('active')) {
+											$(".bg-box > ul > li").removeClass('active');
+										}else {
+											$(".bg-box > ul > li").addClass('active');
+										}
+									});
+									/*$(".bg-box > ul > li > a").click(function(){ // 방향별 통계 각 각 선택시
+										t = $(this).parent('li');
+										if (t.hasClass('active')) {
+											t.removeClass('active');
+										}else {
+											$(".bg-box > ul > li").removeClass('active');
+											t.addClass('active');	
+										}
+									});*/
+								});
+							</script>
+						</div>
+					</div>
+				</div>
+				<div id="etc3">
+					<h2 class="title">연말사거리 법규 위반 차량 통계 <span>(2023-01-03)</span></h3>
+					<ul class="ul-graph">
+						<li>
+							<div class="box">
+								<img src="images/graph3.png" alt="">
+							</div>
+						</li>
+						<li>
+							<div class="box">
+								<img src="images/graph3_2.png" alt="">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>			
+			$(document).ready(function(){ // 셀렉트 체인지
+				$("#select_etc").change(function() {
+					var $val = $(this).val();
 
-		<div id="map"><img src="images/map.png" class="map" alt="" usemap="#image-map"></div>
-		<map name="image-map">
-			<area alt="진입차량 통계" href="#" coords="885,336,759,302" shape="rect">
-			<area alt="진입차량 통계" href="#" coords="1030,322,1153,290" shape="0">
-			<area alt="진입차량 통계" href="#" coords="745,580,878,617,1066,712,1085,665,1022,673" shape="0">
-			<area alt="진입차량 통계" href="#" coords="1015,619,1146,583,1188,593,1151,665" shape="0">
-		</map>
+					if ($val === 'etc1') {
+					  $('#etc1').show();
+					  $('#etc2').hide();
+					  $('#etc3').hide();
+
+					} else {
+					  $('#etc1').hide();
+					}
+					if ($val === 'etc2') {
+					  $('#etc1').hide();
+					  $('#etc2').show();
+					  $('#etc3').hide();
+					} else {
+					  $('#etc2').hide();
+					}
+					if ($val === 'etc3') {
+					  $('#etc1').hide();
+					  $('#etc2').hide();
+					  $('#etc3').show();
+					} else {
+					  $('#etc3').hide();
+					}
+				});
+			});
+		</script>
+		<!-- 교통량 통계 end -->
+
+		
+		<!-- 화면 지도 영역 -->
+		<div id="map">
+			<ul class="links">
+				<li class="m1"><a href="#">진입차량 통계</a>
+					<div class="link-content">
+						<div class="title">진입차량 통계 <a href="#" class="close">닫기</a></div>
+						<div class="box">
+							<div class="table01">
+								<table>
+									<caption>진입차량 통계</caption>
+									<colgroup>
+										<col style="width:180px">
+										<col style="width:auto;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>차종 구분</th>
+											<th>대수</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_car.svg" alt=""></div>
+													<div class="tit">승용차</div>
+												</div>
+											</th>
+											<td>2,147</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bus.svg" alt=""></div>
+													<div class="tit">버스</div>
+												</div>
+											</th>
+											<td>23</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_truck.svg" alt=""></div>
+													<div class="tit">트럭</div>
+												</div>
+											</th>
+											<td>4</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bike.svg" alt=""></div>
+													<div class="tit">오토바이</div>
+												</div>
+											</th>
+											<td>119</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="m2"><a href="#">진입차량 통계</a>
+					<div class="link-content">
+						<div class="title">진입차량 통계 <a href="#" class="close">닫기</a></div>
+						<div class="box">
+							<div class="table01">
+								<table>
+									<caption>진입차량 통계</caption>
+									<colgroup>
+										<col style="width:180px">
+										<col style="width:auto;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>차종 구분</th>
+											<th>대수</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_car.svg" alt=""></div>
+													<div class="tit">승용차</div>
+												</div>
+											</th>
+											<td>2,147</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bus.svg" alt=""></div>
+													<div class="tit">버스</div>
+												</div>
+											</th>
+											<td>23</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_truck.svg" alt=""></div>
+													<div class="tit">트럭</div>
+												</div>
+											</th>
+											<td>4</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bike.svg" alt=""></div>
+													<div class="tit">오토바이</div>
+												</div>
+											</th>
+											<td>119</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="m3"><a href="#">진입차량 통계</a>
+					<div class="link-content">
+						<div class="title">진입차량 통계 <a href="#" class="close">닫기</a></div>
+						<div class="box">
+							<div class="table01">
+								<table>
+									<caption>진입차량 통계</caption>
+									<colgroup>
+										<col style="width:180px">
+										<col style="width:auto;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>차종 구분</th>
+											<th>대수</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_car.svg" alt=""></div>
+													<div class="tit">승용차</div>
+												</div>
+											</th>
+											<td>2,147</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bus.svg" alt=""></div>
+													<div class="tit">버스</div>
+												</div>
+											</th>
+											<td>23</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_truck.svg" alt=""></div>
+													<div class="tit">트럭</div>
+												</div>
+											</th>
+											<td>4</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bike.svg" alt=""></div>
+													<div class="tit">오토바이</div>
+												</div>
+											</th>
+											<td>119</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="m4"><a href="#">진입차량 통계</a>
+					<div class="link-content">
+						<div class="title">진입차량 통계 <a href="#" class="close">닫기</a></div>
+						<div class="box">
+							<div class="table01">
+								<table>
+									<caption>진입차량 통계</caption>
+									<colgroup>
+										<col style="width:180px">
+										<col style="width:auto;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>차종 구분</th>
+											<th>대수</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_car.svg" alt=""></div>
+													<div class="tit">승용차</div>
+												</div>
+											</th>
+											<td>2,147</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bus.svg" alt=""></div>
+													<div class="tit">버스</div>
+												</div>
+											</th>
+											<td>23</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_truck.svg" alt=""></div>
+													<div class="tit">트럭</div>
+												</div>
+											</th>
+											<td>4</td>
+										</tr>
+										<tr>
+											<th>
+												<div class="img-wrap">
+													<div class="icon"><img src="images/links_bike.svg" alt=""></div>
+													<div class="tit">오토바이</div>
+												</div>
+											</th>
+											<td>119</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<img src="images/map.png" class="map" alt="지도">
+		</div>
+		<!--  화면 지도 영역 end -->
 	</div>
 	<!--  body end -->
 
@@ -190,9 +991,9 @@
 			<div class="title"><i></i> 이벤트 정보 알림(RSA) <span class="arrow"></span></div>
 			<div class="slider">
 				<div class="notice-slider">
-					<div class="item"><div class="txt">신방화역 - 마곡나루역(마곡중앙로)불법주정차로 인한 위험 발생</div></div>
-					<div class="item"><div class="txt">신방화역 - 마곡나루역(마곡중앙로)불법주정차로 인한 위험 발생2</div></div>
-					<div class="item"><div class="txt">신방화역 - 마곡나루역(마곡중앙로)불법주정차로 인한 위험 발생3</div></div>
+					<div class="item"><a href="#"><div class="txt">신방화역 - 마곡나루역(마곡중앙로)불법주정차로 인한 위험 발생</div></a></div>
+					<div class="item"><a href="#"><div class="txt">신방화역 - 마곡나루역(마곡중앙로)불법주정차로 인한 위험 발생2</div></a></div>
+					<div class="item"><a href="#"><div class="txt">신방화역 - 마곡나루역(마곡중앙로)불법주정차로 인한 위험 발생3</div></a></div>
 				</div>
 			</div>
 		</div>
