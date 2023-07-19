@@ -79,10 +79,17 @@
 					if (t.hasClass('active')) {
 						t.removeClass('active');
 						t.find('.menu').slideUp('fast');
+						
 						return false; 
 					}else {
 						$(".floating-btns").removeClass('active');
 						t.addClass('active');	
+						$("html").removeClass("camera-opened");
+						$("html").removeClass("video-opened");
+						$("html").removeClass("zoom-opened");						
+						$('.camera-list').hide();
+						$('.video-playback').hide();
+						$('.playback-control').hide();
 						if(t.find('ul').hasClass('menu')){		
 							$(".floating-btns .btns .menu").slideUp('fast');	
 							t.find('.menu').slideDown('fast');	
@@ -96,6 +103,11 @@
 						$(".camera-link").removeClass("active");
 						$("html").addClass("camera-opened"); 
 						$(".floating-btns").removeClass('active');
+						$("html").removeClass("video-opened");
+						$("html").removeClass("zoom-opened");
+						$('.camera-list').hide();
+						$('.video-playback').hide();
+						$('.playback-control').hide();
 					}else{
 						$("html").removeClass("camera-opened");
 					}	
@@ -115,6 +127,11 @@
 						$(".video-link").removeClass("active");
 						$("html").addClass("video-opened"); 
 						$(".floating-btns").removeClass('active');
+						$("html").removeClass("camera-opened");
+						$("html").removeClass("zoom-opened");
+						$('.camera-list').hide();
+						$('.video-playback').hide();
+						$('.playback-control').hide();
 					}else{
 						$("html").removeClass("video-opened");
 					}	
@@ -134,6 +151,11 @@
 						$(".zoom-link").removeClass("active");
 						$("html").addClass("zoom-opened"); 
 						$(".floating-btns").removeClass('active');
+						$("html").removeClass("camera-opened");
+						$("html").removeClass("video-opened");
+						$('.camera-list').hide();
+						$('.video-playback').hide();
+						$('.playback-control').hide();
 					}else{
 						$("html").removeClass("zoom-opened");
 					}	
@@ -216,6 +238,7 @@
 				$(".camera-layout > .box > .btns > a").click(function(e){ // camera-layout 확인버튼 누를시 활성화
 					e.preventDefault();
 					$(".camera-list").show();
+					$("html").removeClass("camera-opened");
 				});
 			});
 		</script>
@@ -264,6 +287,7 @@
 		</div>		
 		<script>
 			$(document).ready(function(){ 
+				$(".camera-list > ul > li:first").find('.camera-popup').slideDown('fast');
 				$(".camera-list > ul > li > a").click(function(e){
 					e.preventDefault();
 					t = $(this).parent('li');
@@ -292,7 +316,7 @@
 
 		<!-- 플로팅 동영상 클릭시 -->
 		<div id="video-layout" class="video-layout">
-			<h2>진입차량 통계 <a href="#" class="close">닫기</a></h2>
+			<h2>Playback 검색 <a href="#" class="close">닫기</a></h2>
 			<div class="box">
 				<div class="form">
 					<div class="item">
@@ -338,7 +362,7 @@
 				<div class="scroll">
 					<div class="table01">
 						<table>
-							<caption>진입차량 통계 검색결과</caption>
+							<caption>Playback 검색결과</caption>
 							<colgroup>
 								<col style="width:136px">
 								<col style="width:80px">
@@ -434,6 +458,7 @@
 					e.preventDefault();
 					$(".video-playback").show();
 					$(".playback-control").show();
+					$("html").removeClass("video-opened");
 				});
 			});
 		</script>
