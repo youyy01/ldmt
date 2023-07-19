@@ -67,7 +67,7 @@
 			<ul class="menu">
 				<li class="camera-link"><a href="#camera-layout"><img src="images/floating_icon1.svg" alt="카메라"></a></li>
 				<li class="video-link"><a href="#video-layout"><img src="images/floating_icon2.svg" alt="동영상"></a></li>
-				<li class="zoom-link"><a href="#"><img src="images/floating_icon3.svg" alt="카메라 확대창"></a></li>
+				<li class="zoom-link"><a href="#"><img src="images/floating_icon3.svg" alt="LIS Latency"></a></li>
 			</ul>
 		</div>
 		<script>
@@ -145,7 +145,7 @@
 					$(".playback-control").hide();
 				});
 
-				$(".zoom-link>a").click(function(e){ // 동영상 선택
+				$(".zoom-link>a").click(function(e){ // LIS Latency
 					e.preventDefault();
 					if(!$(this).parent("li").hasClass("active")){
 						$(".zoom-link").removeClass("active");
