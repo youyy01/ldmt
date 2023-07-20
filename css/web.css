@@ -214,6 +214,7 @@ html.cross-opened #map .links > li.m1 {left:1150px;}
 html.cross-opened #map .links > li.m2 {left:1430px;}
 html.cross-opened #map .links > li.m3 {left:1120px;}
 html.cross-opened #map .links > li.m4 {left:1400px;}
+html.cross-opened .playback-control {left:-335px;}
 .cross-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:32}
 .cross-list ul {padding:8px;}
 .cross-list ul li {position:relative; height:calc(47vh - 36px); margin-bottom:8px;}
@@ -229,6 +230,7 @@ html.monitor-opened #map .links > li.m1 {left:1150px;}
 html.monitor-opened #map .links > li.m2 {left:1430px;}
 html.monitor-opened #map .links > li.m3 {left:1120px;}
 html.monitor-opened #map .links > li.m4 {left:1400px;}
+html.monitor-opened .playback-control {left:-335px;}
 .monitor-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; padding:20px;overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:32}
 .monitor-list .count-wrap {padding:24px 0;}
 .monitor-list .count-wrap ul {display:flex;}
@@ -266,6 +268,7 @@ html.statis-opened #map .links > li.m1 {left:1150px;}
 html.statis-opened #map .links > li.m2 {left:1430px;}
 html.statis-opened #map .links > li.m3 {left:1120px;}
 html.statis-opened #map .links > li.m4 {left:1400px;}
+html.statis-opened .playback-control {left:-335px;}
 .statis-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; padding:20px;overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:32}
 .statis-list .title {position:relative; font-size:20px; line-height:1.4em; color:#fff; font-weight:700; padding-left:12px; letter-spacing: -0.3px; margin-bottom:12px;}
 .statis-list .title:before {content:""; position:absolute; top:10px; left:0; width:6px; height:6px; border-radius:100%; background:#BE5DFF}
