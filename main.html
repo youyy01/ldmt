@@ -247,48 +247,45 @@
 		<!-- 플로팅 카메라 선택후 -->
 		<div class="camera-list">
 			<ul>
-				<li><a href="#"><div class="thumb"><img src="images/camera_img1.png" alt=""></div><div class="tit">CAM 01</div></a>
-					<div class="camera-popup">
-						<div class="pop-img">
-							<div class="tt">CAM 01</div>
-							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
-							<a href="#" class="close">닫기</a>
-						</div>
-					</div>
-				</li> <!-- 이미지 사이즈  246 * 138 -->
-				<li><a href="#"><div class="thumb"><img src="images/camera_img2.png" alt=""></div><div class="tit">CAM 02</div></a>
-					<div class="camera-popup">
-						<div class="pop-img">
-							<div class="tt">CAM 02</div>
-							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
-							<a href="#" class="close">닫기</a>
-						</div>
-					</div>
-				</li> <!-- 이미지 사이즈  246 * 138 -->
-				<li><a href="#"><div class="thumb"><img src="images/camera_img1.png" alt=""></div><div class="tit">CAM 03</div></a>
-					<div class="camera-popup">
-						<div class="pop-img">
-							<div class="tt">CAM 03</div>
-							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
-							<a href="#" class="close">닫기</a>
-						</div>
-					</div>
-				</li> <!-- 이미지 사이즈  246 * 138 -->
-				<li><a href="#"><div class="thumb"><img src="images/camera_img2.png" alt=""></div><div class="tit">CAM 04</div></a>
-					<div class="camera-popup">
-						<div class="pop-img">
-							<div class="tt">CAM 04</div>
-							<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
-							<a href="#" class="close">닫기</a>
-						</div>
-					</div>
-				</li> <!-- 이미지 사이즈  246 * 138 -->	
+				<li><a href="#cam01"><div class="thumb"><img src="images/camera_img1.png" alt=""></div><div class="tit">CAM 01</div></a></li> <!-- 이미지 사이즈  246 * 138 -->
+				<li><a href="#cam02"><div class="thumb"><img src="images/camera_img2.png" alt=""></div><div class="tit">CAM 02</div></a></li> <!-- 이미지 사이즈  246 * 138 -->
+				<li><a href="#cam03"><div class="thumb"><img src="images/camera_img1.png" alt=""></div><div class="tit">CAM 03</div></a></li> <!-- 이미지 사이즈  246 * 138 -->
+				<li><a href="#cam04"><div class="thumb"><img src="images/camera_img2.png" alt=""></div><div class="tit">CAM 04</div></a></li> <!-- 이미지 사이즈  246 * 138 -->	
 			</ul>
-		</div>		
+		</div>	
+		<!-- 플로팅 카메라 선택 팝업 -->
+		<div id="cam01" class="camera-popup"> 
+			<div class="pop-img">
+				<div class="tt">CAM 01</div>
+				<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+				<a href="#" class="close">닫기</a>
+			</div>
+		</div>
+		<div id="cam02" class="camera-popup"> 
+			<div class="pop-img">
+				<div class="tt">CAM 02</div>
+				<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+				<a href="#" class="close">닫기</a>
+			</div>
+		</div>
+		<div id="cam03" class="camera-popup"> 
+			<div class="pop-img">
+				<div class="tt">CAM 03</div>
+				<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+				<a href="#" class="close">닫기</a>
+			</div>
+		</div>
+		<div id="cam04" class="camera-popup"> 
+			<div class="pop-img">
+				<div class="tt">CAM 04</div>
+				<div class="thumb"><img src="images/camera_pop_img.png" alt=""></div> <!-- 이미지 사이즈  738 * 414 -->
+				<a href="#" class="close">닫기</a>
+			</div>
+		</div>
+		<!-- 플로팅 카메라 선택 팝업 // -->
 		<script>
 			$(document).ready(function(){ 
-				$(".camera-list > ul > li:first").find('.camera-popup').slideDown('fast');
-				$(".camera-list > ul > li > a").click(function(e){
+				/*$(".camera-list > ul > li > a").click(function(e){
 					e.preventDefault();
 					t = $(this).parent('li');
 					if (t.hasClass('active')) {
@@ -304,10 +301,24 @@
 							return false;
 						}
 					}
+				});*/
+				
+				jQuery(".camera-popup").hide('fast');	
+				$(".camera-list > ul > li").click(function(e) {
+					e.preventDefault();
+					$(".camera-list > ul > li").removeClass("active");
+					$(this).addClass("active");
+					$(".camera-popup").hide();
+					
+					$(".camera-list").hide();
+					var activeTab = $(this).find("a").attr("href");
+					$(activeTab).show();
+					return false;
 				});
 
 				$(".camera-popup>.pop-img>.close").click(function(e){ // 카메라 팝업 닫기
 					e.preventDefault();
+					$(".camera-list").show();
 					$(".camera-popup").hide();
 				});
 			});
@@ -451,7 +462,7 @@
 			</div>
 		</div>
 
-		<div class="playback-control"></div>
+		<div class="playback-control"><div class="control"></div></div>
 		<script>
 			$(document).ready(function(){ 
 				$(".btn-play").click(function(e){ // camera-layout 확인버튼 누를시 활성화
