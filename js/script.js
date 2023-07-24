@@ -85,6 +85,15 @@ $(document).ready(function(){
 		$("html").removeClass("statis-opened");
 		$("html").removeClass("cross-opened");
 		$("html").removeClass("admin-opened");
+		$("html").removeClass("camera-opened");
+		$("html").removeClass("video-opened");
+		$("html").removeClass("zoom-opened");	
+		$('.camera-list').hide();
+		$('.video-playback').hide();
+		$('.playback-control').hide();
+		$('.camera-popup').hide();
+		$("#map .links li").removeClass('active');
+		$("#map .links li .link-content").slideUp('fast');	
 	});
 
 	

@@ -174,13 +174,15 @@ body {background:#121212; overflow:hidden;}
 .table01 table thead th {padding:8px 10px; border:1px solid #2D2D2D; border-top:0; text-align:center; background:#212121; font-weight:500; color:#fff; font-size:14px; line-height:1.4em; letter-spacing:-.03em;}
 .table01 table tbody th {padding:8px 15px; border:1px solid #2D2D2D; border-top:0; text-align:left; color:#fff; font-size:13px; line-height:1.4em; font-weight:300; letter-spacing:-.03em;}
 .table01 table tbody th .img-wrap {display:flex; align-items:center;}
-.table01 table tbody th .img-wrap .icon {width:20px; height:20px;}
+.table01 table tbody th .img-wrap .icon {width:32px; height:32px;}
 .table01 table tbody th .img-wrap .tit {flex:1 1 auto; min-width:0; width:1%; margin-left:20px;}
 .table01 table tbody td {padding:8px 15px; border:1px solid #2D2D2D; border-top:0; text-align:center; color:#fff; font-size:13px; line-height:1.5em; letter-spacing:-.03em;}
 .table01 tr th:first-child,
 .table01 tr td:first-child {border-left:0;}
 .table01 tr th:last-child,
 .table01 tr td:last-child {border-right:0;}
+.table01.type2  table tbody th,
+.table01.type2  table tbody td {font-size:15px;}
 
 
 /* 이벤트 정보알림 */
@@ -214,6 +216,7 @@ html.cross-opened #map .links > li.m1 {left:1150px;}
 html.cross-opened #map .links > li.m2 {left:1430px;}
 html.cross-opened #map .links > li.m3 {left:1120px;}
 html.cross-opened #map .links > li.m4 {left:1400px;}
+html.cross-opened .video-playback {left:-335px;}
 html.cross-opened .playback-control {left:-335px;}
 .cross-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:32}
 .cross-list ul {padding:8px;}
@@ -230,6 +233,7 @@ html.monitor-opened #map .links > li.m1 {left:1150px;}
 html.monitor-opened #map .links > li.m2 {left:1430px;}
 html.monitor-opened #map .links > li.m3 {left:1120px;}
 html.monitor-opened #map .links > li.m4 {left:1400px;}
+html.monitor-opened .video-playback {left:-335px;}
 html.monitor-opened .playback-control {left:-335px;}
 .monitor-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; padding:20px;overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:32}
 .monitor-list .count-wrap {padding:24px 0;}
@@ -268,6 +272,7 @@ html.statis-opened #map .links > li.m1 {left:1150px;}
 html.statis-opened #map .links > li.m2 {left:1430px;}
 html.statis-opened #map .links > li.m3 {left:1120px;}
 html.statis-opened #map .links > li.m4 {left:1400px;}
+html.statis-opened .video-playback {left:-335px;}
 html.statis-opened .playback-control {left:-335px;}
 .statis-list {position:fixed; top:64px; right:0; width:768px; height:calc(100vh - 112px); background:#212121; padding:20px;overflow:auto; transition:.2s ease-in-out; -ms-transform:translateX(100%); transform:translateX(100%); z-index:32}
 .statis-list .title {position:relative; font-size:20px; line-height:1.4em; color:#fff; font-weight:700; padding-left:12px; letter-spacing: -0.3px; margin-bottom:12px;}
@@ -421,10 +426,10 @@ html.video-opened .video-layout {display:block;}
 .video-layout .btn-play {display:inline-block; width:20px; height:20px; background:url('../images/btn_play.svg') 50% 50% no-repeat; text-indent:-9999em;}
 .video-layout .btn-play:hover {background-image:url('../images/btn_play_on.svg');}
 
-.video-playback {display:none; position:absolute; top:24px; left:0; width:100%; text-align:center;  text-align:center; z-index:30}
+.video-playback {display:none; position:absolute; top:24px; left:0; width:100%; text-align:center;  text-align:center; transition:.2s ease-in-out; z-index:30}
 .video-playback .wrap {display:inline-flex; align-items:center; justify-content:center; background:rgba(18,18,18,.8); border-radius:8px; padding:12px 20px; }
-.video-playback .tt {font-size:14px; line-height:1.4em; color:#fff; letter-spacing: -0.21px; margin-right:10px;}
-.video-playback button {width:32px; height:32px; border:2px solid #757575; background-color:transparent; font-size:12px; line-height:30px; color:#BDBDBD; text-align:center; border-radius:100%; transition:.2s ease-in-out;}
+.video-playback .tt {font-size:20px; line-height:1.4em; color:#fff; letter-spacing: -0.21px; margin-right:10px;}
+.video-playback button {width:40px; height:40px; border:2px solid #757575; background-color:transparent; font-size:14px; line-height:38px; color:#BDBDBD; text-align:center; border-radius:100%; transition:.2s ease-in-out;}
 .video-playback button:hover {background:#9247C4; color:#fff; border-color:#9247C4;}
 
 .playback-control {display:none; position:absolute; width:100%; bottom:24px; left:0; z-index:30; transition:.2s ease-in-out;}
