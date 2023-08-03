@@ -129,9 +129,6 @@ $(document).ready(function(){
 	// select2
 	$('.selectpicker').select2();
 
-	// usemap
-	jQuery('img[usemap]').rwdImageMaps();
-	
 	// 이벤트 알림
 	$('.notice-slider').slick({
 	  dots: false,
@@ -145,7 +142,55 @@ $(document).ready(function(){
       autoplaySpeed: 3000,
 	});
 	
+
+	// 로그인 팝업
+	$('.admin-btn').click(function(){
+        var $href = $(this).attr('href');
+        layer_popup($href);
+    });
+    function layer_popup(el){
+        var $el = $(el);
+        var isDim = $el.prev().hasClass('dimBg');
+        isDim ? $('.admin-popup').fadeIn() : $el.fadeIn();
+        var $elWidth = ~~($el.outerWidth()),
+            $elHeight = ~~($el.outerHeight()),
+            docWidth = $(document).width(),
+            docHeight = $(document).height();
+        if ($elHeight < docHeight || $elWidth < docWidth) {
+            $el.css({
+                marginTop: -$elHeight /2,
+                marginLeft: -$elWidth/2
+            })
+        } else {
+            $el.css({top: 0, left: 0});
+        }
+        $el.find('h2>.close').click(function(){
+            isDim ? $('.admin-popup').fadeOut() : $el.fadeOut();
+            return false;
+        });
+
+		$el.find('.pop-layout-close').click(function(){
+            isDim ? $('.admin-popup').fadeOut() : $el.fadeOut();
+            return false;
+        });
+
+    }
 	
+
+	jQuery(".tab-content").hide();
+	jQuery("ul.tabs>li:first").addClass("active"); 	
+	jQuery(".tab-content:first").show();
+
+	jQuery("ul.tabs>li").click(function(e) {
+		e.preventDefault();
+		jQuery("ul.tabs>li").removeClass("active");
+		jQuery(this).addClass("active");
+		jQuery(".tab-content").hide();		
+
+		var onTab = jQuery(this).find("a").attr("href");
+		jQuery(onTab).show();
+		return false;
+	});
 	
 });
 

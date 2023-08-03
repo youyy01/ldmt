@@ -19,10 +19,8 @@
 	<link rel="stylesheet" type="text/css" href="css/select2.css">
 	<link rel="stylesheet" type="text/css" href="css/web.css">
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/select2.min.js"></script>
 	<script type="text/javascript" src="js/slick.js"></script>
-	<script type="text/javascript" src="js/jquery.rwdImageMaps.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 
 <body>
@@ -51,6 +49,7 @@
 				<li class="m1"><a href="#"><i class="icon1"></i> 다중교차로</a></li>
 				<li class="m2"><a href="#"><i class="icon2"></i> 실시간모니터링</a></li>
 				<li class="m3"><a href="#"><i class="icon3"></i> 교통량 통계</a></li>
+				<li class="pop-login"><a href="#login" class="admin-btn"><i class="icon4"></i> 관리자</a></li><!-- 로그인 -->
 				<li class="m4"><a href="#"><i class="icon4"></i> 관리자</a></li>
 			</ul>
 		</div>
@@ -444,7 +443,6 @@
 				<button type="button">x1.5</button>
 			</div>
 		</div>
-
 		<div class="playback-control"><div class="control"></div></div>
 		<script>
 			$(document).ready(function(){ 
@@ -629,6 +627,7 @@
 								<option value="etc1">차량 교통량 통계</option>
 								<option value="etc2">보행자 통계</option>
 								<option value="etc3">법규 위반 통계</option>
+								<option value="etc4">진입/진출 방향별 교통량 통계</option>
 							</select>
 						</div>
 					</div>
@@ -671,7 +670,7 @@
 						<div class="graph-opt"><img src="images/graph2.png" alt=""></div>
 						<div class="crossroad-wrap">
 							<div class="tt">방향별 통계 선택</div>
-							<div class="bg-box">
+							<div class="bg-box sel-box1">
 								<ul>
 									<li class="road-link m1"><a href="#"><div class="txt"><span>이매역</span></div></a></li>
 									<li class="road-link m2"><a href="#"><div class="txt"><span>판교</span></div></a></li>
@@ -682,23 +681,14 @@
 							</div>
 							<script>
 								$(document).ready(function(){ 								
-									$(".bg-box > ul > li > a").click(function(){ // 방향별 통계 전체 선택
+									$(".sel-box1 > ul > li > a").click(function(){ // 방향별 통계 전체 선택
 										t = $(this).parent('li');
 										if (t.hasClass('active')) {
-											$(".bg-box > ul > li").removeClass('active');
+											$(".sel-box1 > ul > li").removeClass('active');
 										}else {
-											$(".bg-box > ul > li").addClass('active');
+											$(".sel-box1 > ul > li").addClass('active');
 										}
 									});
-									/*$(".bg-box > ul > li > a").click(function(){ // 방향별 통계 각 각 선택시
-										t = $(this).parent('li');
-										if (t.hasClass('active')) {
-											t.removeClass('active');
-										}else {
-											$(".bg-box > ul > li").removeClass('active');
-											t.addClass('active');	
-										}
-									});*/
 								});
 							</script>
 						</div>
@@ -719,6 +709,38 @@
 						</li>
 					</ul>
 				</div>
+				<div id="etc4">
+					<h2 class="title">진입/진출 방향별 교통량 통계 <span>(안말사거리, 2023-01-03)</span></h3>
+					<div class="box">
+						<div class="graph-opt"><img src="images/graph2.png" alt=""></div>
+						<div class="crossroad-wrap">
+							<div class="tt">방향별 통계 선택</div>
+							<div class="bg-box sel-box2">
+								<ul>
+									<li class="road-link m1"><a href="#"><div class="txt"><span>이매역</span></div></a></li>
+									<li class="road-link m2"><a href="#"><div class="txt"><span>판교</span></div></a></li>
+									<li class="road-link m3"><a href="#"><div class="txt"><span>서현역</span></div></a></li>
+									<li class="road-link m4"><a href="#"><div class="txt"><span>수내역</span></div></a></li>
+									<li class="road-link m5"><a href="#"><div class="txt"><span>안말<br>교차로</span></div></a></li>
+								</ul>
+							</div>
+							<script>
+								$(document).ready(function(){ 							
+								
+									$(".sel-box2 > ul > li > a").click(function(){ // 방향별 통계 각 각 선택시
+										t = $(this).parent('li');
+										if (t.hasClass('active')) {
+											t.removeClass('active');
+										}else {
+											$(".sel-box2 > ul > li").removeClass('active');
+											t.addClass('active');	
+										}
+									});
+								});
+							</script>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<script>			
@@ -730,6 +752,7 @@
 					  $('#etc1').show();
 					  $('#etc2').hide();
 					  $('#etc3').hide();
+					  $('#etc4').hide();
 
 					} else {
 					  $('#etc1').hide();
@@ -738,6 +761,7 @@
 					  $('#etc1').hide();
 					  $('#etc2').show();
 					  $('#etc3').hide();
+					  $('#etc4').hide();
 					} else {
 					  $('#etc2').hide();
 					}
@@ -745,14 +769,554 @@
 					  $('#etc1').hide();
 					  $('#etc2').hide();
 					  $('#etc3').show();
+					  $('#etc4').hide();
 					} else {
 					  $('#etc3').hide();
+					}
+					if ($val === 'etc4') {
+					  $('#etc1').hide();
+					  $('#etc2').hide();
+					  $('#etc3').hide();
+					  $('#etc4').show();
+					} else {
+					  $('#etc4').hide();
 					}
 				});
 			});
 		</script>
 		<!-- 교통량 통계 end -->
 
+		<!-- 관리자 로그인 팝업 -->
+		<div class="admin-popup" id="login" style="width:480px;">
+			<h2>Connect to Server <a href="#" class="close">닫기</a></h2>			
+			<div class="box">
+				<form action="">
+					<div class="login-wrap">
+						<h3>Passsword</h3>
+						<div class="group">
+							<input type="password" name="password" id="password" class="input">
+						</div>
+						<div class="group">
+							<input type="password" name="password" id="password" class="input nopassword">
+							<p class="txt">올바른 패스워드를 입력하여 주세요.</p>
+						</div>
+						<div class="btns">
+							<div class="col"><a href="#" class="btn-pack  dark medium cancel block">취소</a></div>
+							<div class="col"><button type="submit" class="btn-pack focus medium submit block">확인</button></div>
+						</div>
+					</div>
+				</form>
+			</div>			
+		</div>
+		<!-- 관리자 로그인 팝업 end -->
+
+
+		<!-- 관리자 -->
+		<div class="admin-list">
+			<div class="nav">
+				<ul class="tabs">
+					<li><a href="#user">사용자 관리</a></li>
+					<li><a href="#reception">수신 데이터</a></li>
+					<li><a href="#sensor">센서 데이터</a></li>
+				</ul>
+			</div>
+			<div class="tab-content" id="user">
+				<div class="btn">
+					<a href="#" class="btn-pack small add border2">추가</a>
+					<a href="#" class="btn-pack small minus border2">삭제</a>
+					<a href="#modify" class="btn-pack small modify border2 admin-btn">수정</a>
+				</div>
+				<div class="table02">
+					<table>
+						<caption>사용자 관리</caption>
+						<colgroup>
+							<col style="width:33.333333%">
+							<col style="width:33.333333%">
+							<col style="width:33.333333%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Privilege</th>
+								<th>Desc.</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Admin</td>
+								<td>Admin</td>
+								<td>Admin</td>
+							</tr>
+							<tr>
+								<td>andrian lee</td>
+								<td>Admin</td>
+								<td>Second Account</td>
+							</tr>
+							<tr>
+								<td>thomas kim</td>
+								<td>User</td>
+								<td>CS team</td>
+							</tr>
+							<tr>
+								<td>susan oh</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>alex DF</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mitchel lee</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>thomas kim</td>
+								<td>User</td>
+								<td>마케팅부서 과장</td>
+							</tr>
+							<tr>
+								<td>susan oh</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>alex DF</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mitchel lee</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>thomas kim</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>susan oh</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>alex DF</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mitchel lee</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>thomas kim</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>susan oh</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>alex DF</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mitchel lee</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>thomas kim</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>susan oh</td>
+								<td>User</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div> <!-- user end -->
+
+			<div class="tab-content" id="reception">
+				<div class="table02 hover">
+					<table>
+						<caption>수신 데이터</caption>
+						<colgroup>
+							<col style="width:60px">
+							<col style="width:160px">
+							<col style="width:auto">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Receive Time</th>
+								<th>Desc.</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="active">
+								<td>999</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍니다...............</a></td>
+							</tr>
+							<tr>
+								<td>998</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>997</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>996</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>995</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>994</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>993</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>992</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>991</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>990</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>989</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>988</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>987</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>986</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>985</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>984</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>983</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>982</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>981</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>980</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>979</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>978</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>977</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+							<tr>
+								<td>976</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#jsonCont" class="admin-btn">안말사거리 교차로 신호등 통제에 경고가 들어왔습니다. 속히 확인하시어 조치하여 주시기 바랍...</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div> <!-- reception end -->
+
+			<div class="tab-content" id="sensor">
+				<div class="table02 hover">
+					<table>
+						<caption>센서 데이터</caption>
+						<colgroup>
+							<col style="width:60px">
+							<col style="width:160px">
+							<col style="width:auto">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Receive Time</th>
+								<th>Desc.</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="active">
+								<td>999</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">IMG_ANMAL_MONDAY_NOON_203921.jpg</a></td>
+							</tr>
+							<tr>
+								<td>998</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">IMG_203921.jpg</a></td>
+							</tr>
+							<tr>
+								<td>997</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>996</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">vfactory_sensor_img_12345.gif</a></td>
+							</tr>
+							<tr>
+								<td>995</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">IMG_ANMAL_MONDAY_NOON_203921.jpg</a></td>
+							</tr>
+							<tr>
+								<td>994</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">IMG_203921.png</a></td>
+							</tr>
+							<tr>
+								<td>993</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>992</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">vfactory_sensor_img_12345.png</a></td>
+							</tr>
+							<tr>
+								<td>991</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">IMG_ANMAL_MONDAY_NOON_203921.png</a></td>
+							</tr>
+							<tr>
+								<td>990</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>989</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>988</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>987</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>986</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>985</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>984</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>983</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>982</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>981</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>980</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>979</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>978</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>977</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+							<tr>
+								<td>976</td>
+								<td>2023.06.12 13:15:03</td>
+								<td class="left"><a href="#sensor_layout" class="admin-btn"><img src="images/ico_pic.svg" alt="이미지">Sensor_img_2234.png</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div> <!-- sensor end -->
+		</div>
+
+		<div class="admin-popup" id="modify" style="width:300px;">
+			<h2>사용자 관리 <a href="#" class="close">닫기</a></h2>
+			<div class="box box2">
+				<div class="user-wrap">
+					<form action="">
+						<div class="group">
+							<ul>
+								<li>
+									<div class="tit"><label for="u_id">ID</label></div>
+									<div class="info"><input type="text" name="" id="" class="input disable" value="susanoh"></div>
+								</li>
+								<li>
+									<div class="tit"><label for="u_pass">Password</label></div>
+									<div class="info"><input type="password" name="u_pass" id="u_pass" class="input" value="******"></div>
+								</li>
+								<li>
+									<div class="tit"><label for="u_privi">Privilege</label></div>
+									<div class="info">
+										<select name="" id="" class="selectpicker" style="width:100%">
+											<option value="admin">Admin</option>
+										</select>
+									</div>
+								</li>
+								<li>
+									<div class="tit"><label for="u_desc">Desc</label></div>
+									<div class="info"><input type="text" name="u_desc" id="u_desc" class="input" value="관리자"></div>
+								</li>
+							</ul>
+						</div>
+						<div class="buttons">
+							<div class="cen">
+								<a href="#" class="btn-pack small2 dark">취소</a>
+								<input type="button" class="btn-pack small2 focus" value="저장">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>			
+		</div><!-- 사용자정보 팝업 end -->	
+		
+		<div class="admin-popup" id="jsonCont" style="width:600px;">
+			<h2>JSON Contents <a href="#" class="close">닫기</a></h2>
+			<div class="box box2">
+				<div class="jsonCont-scroll">
+					<div class="content">
+						station : 73 <br>
+						id : 0057-0127 <br>
+						timestamp : 166744698920 <br>
+						end_time : 166744698920 <br>
+						itis_code : 4615 <br>
+						temperature : 12.4 <br>
+						humidity : 3.0 <br>
+						wind_speeed : 1.8 <br>
+						wind_dr : n <br>
+						precipitation : 0 <br>
+						high_temp : 3276 <br>
+						low_temp : 3276
+					</div>
+				</div>
+				<div class="buttons">
+					<div class="cen">
+						<a href="#" class="btn-pack focus small2 pop-layout-close">확인</a>
+					</div>
+				</div>
+			</div>			
+		</div><!-- JSON Contents end -->
+
+		<div class="admin-popup" id="sensor_layout" style="width:680px;">
+			<h2>상세이미지 <a href="#" class="close">닫기</a></h2>
+			<div class="box box2">
+				<div class="jsonCont-scroll">
+					<div class="content">
+						이미지가 들어갈 공간 <br>
+						이미지 사이즈 정해주세요~
+					
+					</div>
+				</div>
+				<div class="buttons">
+					<div class="cen">
+						<a href="#" class="btn-pack focus small2 pop-layout-close">확인</a>
+					</div>
+				</div>
+			</div>			
+		</div><!-- sensor_layout end -->	
+		<!-- 관리자  end -->
 		
 		<!-- 화면 지도 영역 -->
 		<div id="map">
