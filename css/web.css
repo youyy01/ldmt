@@ -279,7 +279,8 @@ html.monitor-opened .playback-control {left:-335px;}
 .monitor-list .progress-wrap .item .bar-info ul li .tt {width:140px; display:flex; align-items:center; font-size:13px; line-height:1.2em; color:#fff;}
 .monitor-list .progress-wrap .item .bar-info ul li .tt .dot {width:10px; height:10px; margin-right:4px;}
 .monitor-list .progress-wrap .item .bar-info ul li:nth-child(2) .tt {color:#9E9E9E}
-.monitor-list .progress-wrap .item .bar-info ul li .progress {flex:1 1 auto; min-width:0; width:1%; line-height:0;}
+.monitor-list .progress-wrap .item .bar-info ul li .progress {position:relative; flex:1 1 auto; min-width:0; width:1%; line-height:0; background:#424242; border-radius:4px; padding:4px;}
+.monitor-list .progress-wrap .item .bar-info ul li .progress .bar {border-radius:2px; height:10px;}
 
 
 /* 교통량 통계 */

@@ -171,14 +171,14 @@
 			<h2>카메라 선택창 <a href="#" class="close">닫기</a></h2>
 			<div class="box">
 				<div class="scroll">
-					<ul>
-						<li class="active">
+					<ul id="camera-link">
+						<li>
 							<a href="#" >
 								<div class="icon"></div>
 								<div class="tit">신사역 사거리 카메라 1</div>
 							</a>
 						</li>
-						<li class="active">
+						<li>
 							<a href="#">
 								<div class="icon"></div>
 								<div class="tit">신사역 사거리 카메라 2</div>
@@ -239,6 +239,17 @@
 					e.preventDefault();
 					$(".camera-list").show();
 					$("html").removeClass("camera-opened");
+				});
+
+				$("#camera-link > li > a").click(function(e){
+					e.preventDefault();
+					t = $(this).parent('li');
+					if (t.hasClass('active')) {
+						t.removeClass('active');
+						return false; 
+					}else {
+						t.addClass('active');
+					}
 				});
 			});
 		</script>
@@ -548,8 +559,8 @@
 					</div>
 					<div class="bar-info">
 						<ul>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_orange.svg" alt=""></div> 발생건수 : 22건</div> <div class="progress"><img src="images/graph_bar1.png" alt=""></div></li>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><img src="images/graph_bar2.png" alt=""></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_orange.svg" alt=""></div> 발생건수 : 22건</div> <div class="progress"><div class="bar" style="background:#E67E15; width:70%"></div></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><div class="bar" style="background:#757575; width:40%"></div></div></li>
 						</ul>
 					</div>
 				</div>
@@ -561,8 +572,8 @@
 					</div>
 					<div class="bar-info">
 						<ul>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_yellow.svg" alt=""></div> 발생건수 : 4건</div> <div class="progress"><img src="images/graph_bar3.png" alt=""></div></li>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><img src="images/graph_bar4.png" alt=""></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_orange.svg" alt=""></div> 발생건수 : 22건</div> <div class="progress"><div class="bar" style="background:#D4C825; width:30%"></div></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><div class="bar" style="background:#757575; width:40%"></div></div></li>
 						</ul>
 					</div>
 				</div>
@@ -574,8 +585,8 @@
 					</div>
 					<div class="bar-info">
 						<ul>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_green.svg" alt=""></div> 발생건수 : 14건</div> <div class="progress"><img src="images/graph_bar5.png" alt=""></div></li>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><img src="images/graph_bar6.png" alt=""></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_orange.svg" alt=""></div> 발생건수 : 22건</div> <div class="progress"><div class="bar" style="background:#4AB859; width:80%"></div></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><div class="bar" style="background:#757575; width:20%"></div></div></li>
 						</ul>
 					</div>
 				</div>
@@ -587,8 +598,8 @@
 					</div>
 					<div class="bar-info">
 						<ul>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_blue.svg" alt=""></div> 발생건수 : 1건</div> <div class="progress"><img src="images/graph_bar7.png" alt=""></div></li>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><img src="images/graph_bar8.png" alt=""></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_orange.svg" alt=""></div> 발생건수 : 22건</div> <div class="progress"><div class="bar" style="background:#5172F9; width:30%"></div></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><div class="bar" style="background:#757575; width:10%"></div></div></li>
 						</ul>
 					</div>
 				</div>
@@ -600,8 +611,8 @@
 					</div>
 					<div class="bar-info">
 						<ul>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_pink.svg" alt=""></div> 발생건수 : 829건</div> <div class="progress"><img src="images/graph_bar9.png" alt=""></div></li>
-							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><img src="images/graph_bar10.png" alt=""></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_orange.svg" alt=""></div> 발생건수 : 22건</div> <div class="progress"><div class="bar" style="background:#F56464; width:20%"></div></div></li>
+							<li><div class="tt"><div class="dot"><img src="images/polygon_gray.svg" alt=""></div> 전일 발생 건수 : 2건</div> <div class="progress"><div class="bar" style="background:#757575; width:60%"></div></div></li>
 						</ul>
 					</div>
 				</div>
